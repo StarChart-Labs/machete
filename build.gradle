@@ -1,0 +1,143 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+    }
+    dependencies {
+    	classpath group: 'com.jfrog.bintray.gradle', name: 'gradle-bintray-plugin', version: '1.7.3'
+        classpath group: 'com.netflix.nebula', name: 'nebula-dependency-recommender', version: '4.2.0'
+        classpath group: 'com.netflix.nebula', name: 'nebula-publishing-plugin', version: '4.2.0'
+        classpath group: 'org.starchartlabs.flare', name: 'flare-operations-plugins', version: '0.2.0'
+        classpath group: 'org.starchartlabs.flare', name: 'flare-publishing-plugins', version: '0.2.0'
+    }
+}
+
+apply plugin: 'org.starchartlabs.flare.merge-coverage-reports'
+
+allprojects{
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'jacoco'
+    apply plugin: 'nebula.dependency-recommender'
+    apply plugin: 'nebula.maven-resolved-dependencies'
+    apply plugin: 'org.starchartlabs.flare.dependency-insight'
+
+    dependencyRecommendations {
+        propertiesFile file: file("${rootDir}/dependencies.properties")
+	}
+
+    sourceCompatibility = "${javaVersion}"
+
+    //Always download sources, to allow debugging, and use Eclipse containers for greater portability
+    eclipse {
+        classpath {
+            downloadSources=true
+            containers = [ "org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-${sourceCompatibility}".toString() ]
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+}
+
+subprojects{
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.jfrog.bintray'
+    apply plugin: 'nebula.maven-base-publish'
+    apply plugin: 'nebula.maven-dependencies'
+    apply plugin: 'org.starchartlabs.flare.increase-test-logging'
+    apply plugin: 'org.starchartlabs.flare.source-jars'
+	apply plugin: 'org.starchartlabs.flare.published-project'
+
+    //Setup default test behavior, including failure logging
+    test {
+        useTestNG() {
+            useDefaultListeners = true
+        }
+    }
+    
+    //Apply module naming to all projects
+    //Add LICENSE so it is included in all JARs, as well as dependent licenses, fulfilling the "distributions include license" requirement
+    jar {
+		manifest {
+			attributes("Automatic-Module-Name": "${project.group}.${project.name  - 'alloy-'}".replaceAll("-", "."))
+		}
+		
+		from("${rootDir}"){
+            include 'LICENSE'
+        }
+	}
+	
+	//All projects should provide source code and javadoc, and upload these with any released artifacts
+    sourcesJar {
+        from("${rootDir}"){
+            include 'LICENSE'
+        }
+    }
+
+    javadocJar{
+        from("${rootDir}"){
+            include 'LICENSE'
+        }
+	}
+	
+	//If not a remote run, publish to local only
+    if(!project.hasProperty('remoteDeploy')){
+        publishing {
+            repositories {
+                mavenLocal()
+            }
+        }
+    }
+    
+    publishedInfo{
+        url = 'https://github.com/StarChart-Labs/machete'
+      
+        scm{
+        	github 'StarChart-Labs', 'machete'
+        }
+      
+        licenses{
+          	mit('repo')
+        }
+      
+        developers{
+          	github 'romeara', 'Ryan OMeara'
+        }
+    }
+
+    bintray {
+        user = System.getProperty('bintray_user')
+        key = System.getProperty('bintray_key')
+        publications = [ 'nebula' ]
+
+        if(!project.hasProperty('remoteDeploy')){
+            dryRun = true
+        }
+
+        pkg {
+            repo = 'alloy'
+            name = "${project.name}"
+            userOrg = 'starchart-labs'
+            licenses = ['MIT']
+            vcsUrl = 'https://github.com/StarChart-Labs/machete'
+
+            version {
+                name = "${project.version}"
+                desc = "${project.name} release ${project.version} final"
+                released  = new Date()
+                vcsTag = "${project.version}"
+
+                gpg {
+                    sign = true
+                }
+            }
+        }
+	}
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "${gradleVersion}"
+}
