@@ -4,6 +4,8 @@
 
 Cutting through the Amazonian thicket: Utilities for interacting with AWS
 
+Machete is a utility library which provides APIs around commmon use patterns related to Amazon Web Services
+
 ## Contributing
 
 Information for how to contribute to Machete can be found in [the contribution guidelines](./CONTRIBUTING.md)
