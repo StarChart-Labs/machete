@@ -22,6 +22,10 @@ If you discover a security vulnerability, contact the development team by e-mail
 
 ## Projects
 
+### machete-sns
+
+Contains utilities for interacting with [Amazon SNS](https://aws.amazon.com/sns/)
+
 ### machete-ssm
 
 Contains utilities for interacting with [Amazon SSM](https://docs.aws.amazon.com/systems-manager)

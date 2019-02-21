@@ -5,10 +5,10 @@
  * of the MIT license. See the LICENSE file for details.
  */
 /**
- * Contains representation used to interact with AWS SSM's parameter store functionality
+ * Contains representation used to interact with AWS SNS
  *
  * @author romeara
  * @since 0.1.0
  */
 @javax.annotation.ParametersAreNonnullByDefault
-package org.starchartlabs.machete.ssm.parameter;
+package org.starchartlabs.machete.sns;

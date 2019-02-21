@@ -1,1 +1,2 @@
+include 'machete-sns'
 include 'machete-ssm'
