@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.1.0]
 ### Added
 
 - Added org.starchartlabs.machete.ssm.parameter.SecuredParameter for ease of access to encrypted AWS SSM parameter store values
