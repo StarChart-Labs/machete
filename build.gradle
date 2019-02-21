@@ -117,7 +117,7 @@ subprojects{
         }
 
         pkg {
-            repo = 'alloy'
+            repo = 'machete'
             name = "${project.name}"
             userOrg = 'starchart-labs'
             licenses = ['MIT']
