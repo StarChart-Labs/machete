@@ -8,7 +8,7 @@ Machete is a utility library which provides APIs around commmon use patterns rel
 
 ## Contributing
 
-Information for how to contribute to Machete can be found in [the contribution guidelines](./CONTRIBUTING.md)
+Information for how to contribute to Machete can be found in [the contribution guidelines](./docs/CONTRIBUTING.md)
 
 ## Legal
 
@@ -24,8 +24,12 @@ If you discover a security vulnerability, contact the development team by e-mail
 
 ### machete-sns
 
+[![Maven Central](https://img.shields.io/maven-central/v/org.starchartlabs.machete/machete-sns.svg)](https://mvnrepository.com/artifact/org.starchartlabs.machete/machete-sns)
+
 Contains utilities for interacting with [Amazon SNS](https://aws.amazon.com/sns/)
 
 ### machete-ssm
+
+[![Maven Central](https://img.shields.io/maven-central/v/org.starchartlabs.machete/machete-ssm.svg)](https://mvnrepository.com/artifact/org.starchartlabs.machete/machete-ssm)
 
 Contains utilities for interacting with [Amazon SSM](https://docs.aws.amazon.com/systems-manager)
