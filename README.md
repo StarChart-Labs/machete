@@ -1,6 +1,6 @@
 # Machete
 
-[![Travis CI](https://img.shields.io/travis/StarChart-Labs/machete.svg?branch=master)](https://travis-ci.org/StarChart-Labs/machete) [![codecov](https://codecov.io/gh/StarChart-Labs/machete/branch/master/graph/badge.svg)](https://codecov.io/gh/StarChart-Labs/machete)
+[![Travis CI](https://img.shields.io/travis/com/StarChart-Labs/machete.svg?branch=master)](https://travis-ci.com/StarChart-Labs/machete) [![codecov](https://codecov.io/gh/StarChart-Labs/machete/branch/master/graph/badge.svg)](https://codecov.io/gh/StarChart-Labs/machete)
 
 Cutting through the Amazonian thicket: Utilities for interacting with AWS
 
