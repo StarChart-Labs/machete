@@ -58,8 +58,6 @@ subprojects{
     apply plugin: 'org.starchartlabs.flare.increase-test-logging'
     apply plugin: 'org.starchartlabs.flare.source-jars'
 	apply plugin: 'org.starchartlabs.flare.published-project'
-    
-    sourceCompatibility = "${javaVersion}"
 
     //Setup default test behavior, including failure logging
     test {
