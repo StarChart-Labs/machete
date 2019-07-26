@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+
+- Updated com.amazonaws:aws-java-sdk-ssm to latest micro version (1.11.598)
+- Updated com.fasterxml.jackson.core:jackson-databind to latest micro version (2.9.9.1)
+- Updated test dependencies
 
 ## [0.2.0]
 ### Changed
