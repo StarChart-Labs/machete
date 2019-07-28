@@ -40,6 +40,7 @@ allprojects{
 
 subprojects{
     apply plugin: 'java'
+    apply plugin: 'checkstyle'
     apply plugin: 'jacoco'
     apply plugin: 'maven-publish'
     apply plugin: 'com.jfrog.bintray'
@@ -55,6 +56,18 @@ subprojects{
             useDefaultListeners = true
         }
     }
+    
+   checkstyle {
+   		configFile = rootProject.file('config/checkstyle/checkstyle.xml')
+   		configProperties = [ 'checkstyle.config.dir' : rootProject.file('config/checkstyle') ]
+   		toolVersion = '8.18'
+	}
+
+	task checkstyleAll{}
+
+	tasks.withType(Checkstyle).all { checkstyleTask -> checkstyleAll.dependsOn checkstyleTask }
+
+	check.dependsOn checkstyleAll
     
     // Apply module naming to all projects
     // Add LICENSE so it is included in all JARs, as well as dependent licenses, fulfilling the "distributions include license" requirement
