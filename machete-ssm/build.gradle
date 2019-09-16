@@ -4,9 +4,9 @@ description = 'Utilities for interacting with Amazon SSM'
 dependencies {
     compileOnly 'com.google.code.findbugs:jsr305'
     
-    compile 'com.amazonaws:aws-java-sdk-ssm'
-    compile 'org.starchartlabs.alloy:alloy-core'
+    api 'com.amazonaws:aws-java-sdk-ssm'
+    api 'org.starchartlabs.alloy:alloy-core'
     
-    testCompile 'org.mockito:mockito-core'
-    testCompile 'org.testng:testng'
+    testImplementation 'org.mockito:mockito-core'
+    testImplementation 'org.testng:testng'
 }

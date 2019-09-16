@@ -6,26 +6,15 @@ buildscript {
     }
     dependencies {
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'com.netflix.nebula:nebula-dependency-recommender:4.2.0'
-        classpath 'com.netflix.nebula:nebula-publishing-plugin:4.2.0'
-        classpath 'org.starchartlabs.flare:flare-operations-plugins:2.0.0'
-        classpath 'org.starchartlabs.flare:flare-publishing-plugins:1.0.0'
     }
 }
 
-apply plugin: 'org.starchartlabs.flare.merge-coverage-reports'
+plugins {
+    id 'org.starchartlabs.flare.multi-module-library' version '0.2.1'
+}
 
 allprojects{
     apply plugin: 'eclipse'
-    apply plugin: 'nebula.dependency-recommender'
-    apply plugin: 'nebula.maven-resolved-dependencies'
-    apply plugin: 'org.starchartlabs.flare.dependency-reporting'
-
-    dependencyRecommendations {
-        strategy OverrideTransitives
-
-        propertiesFile file: file("${rootDir}/dependencies.properties")
-    }
 
     // Always download sources, to allow debugging, and use Eclipse containers for greater portability
     eclipse {
@@ -41,16 +30,21 @@ allprojects{
 }
 
 subprojects{
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'checkstyle'
     apply plugin: 'jacoco'
     apply plugin: 'maven-publish'
     apply plugin: 'com.jfrog.bintray'
-    apply plugin: 'nebula.maven-base-publish'
-    apply plugin: 'nebula.maven-dependencies'
-    apply plugin: 'org.starchartlabs.flare.increase-test-logging'
-    apply plugin: 'org.starchartlabs.flare.source-jars'
-    apply plugin: 'org.starchartlabs.flare.published-project'
+    
+    projectMetaData {
+        github {
+            repository 'StarChart-Labs', 'machete'
+        }
+        
+        licenses {
+            mit()
+        }
+    }
 
     // Setup default test behavior, including failure logging
     test {
@@ -70,24 +64,19 @@ subprojects{
     tasks.withType(Checkstyle).all { checkstyleTask -> checkstyleAll.dependsOn checkstyleTask }
 
     check.dependsOn checkstyleAll
-
+    
     // Apply module naming to all projects
     // Add LICENSE so it is included in all JARs, as well as dependent licenses, fulfilling the "distributions include license" requirement
     jar {
         manifest {
-            attributes("Automatic-Module-Name": "${project.group}.${project.name  - 'alloy-'}".replaceAll("-", "."))
+            attributes("Automatic-Module-Name": "${project.group}.${project.name  - 'machete-'}".replaceAll("-", "."))
         }
-
-        from("${rootDir}"){ include 'LICENSE' }
     }
-
-    // All projects should provide source code and javadoc, and upload these with any released artifacts
-    sourcesJar {
-        from("${rootDir}"){ include 'LICENSE' }
-    }
-
-    javadocJar{
-        from("${rootDir}"){ include 'LICENSE' }
+    
+    tasks.withType(Jar).all {
+        from("${rootDir}"){
+            include 'LICENSE'
+        }
     }
 
     // If not a remote run, publish to local only
@@ -99,41 +88,8 @@ subprojects{
         }
     }
 
-    publishedInfo{
-        url = 'https://github.com/StarChart-Labs/machete'
-
-        scm{ 
-            github 'StarChart-Labs', 'machete' 
-        }
-
-        licenses{ 
-            mit('repo') 
-        }
-
-        developers{ 
-            github 'romeara', 'Ryan OMeara' 
-        }
-    }
-    
-    publishing {
-        publications {
-            nebula(MavenPublication) {
-                pom {
-                    contributors {
-                        contributor {
-                            name = 'jholmes7086'
-                            email = 'https://github.com/jholmes7086'
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     bintray {
-        user = System.getProperty('bintray_user')
-        key = System.getProperty('bintray_key')
-        publications = ['nebula']
+        publications = ['maven']
 
         if(!project.hasProperty('remoteDeploy')){
             dryRun = true
@@ -144,7 +100,7 @@ subprojects{
             name = "${project.name}"
             userOrg = 'starchart-labs'
             licenses = ['MIT']
-            vcsUrl = 'https://github.com/StarChart-Labs/machete'
+            vcsUrl = "${projectMetaData.scm.vcsUrl}"
 
             version {
                 name = "${project.version}"
@@ -155,6 +111,15 @@ subprojects{
                 gpg { 
                     sign = true 
                 }
+            }
+        }
+    }
+    
+    bintrayUpload {
+        doFirst {
+            project.bintray {
+                user = "${credentials.bintray.username}"
+                key = "${credentials.bintray.password}"
             }
         }
     }
