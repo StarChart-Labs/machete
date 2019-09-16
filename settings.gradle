@@ -1,2 +1,4 @@
+rootProject.name = 'machete'
+
 include 'machete-sns'
 include 'machete-ssm'
