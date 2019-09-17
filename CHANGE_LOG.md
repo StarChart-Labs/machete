@@ -5,8 +5,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-### Changed
-- Fixed issue with Java automatic module names duplicating 'machete' element
 
 ## [0.2.1]
 ### Changed
