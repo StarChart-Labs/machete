@@ -1,6 +1,6 @@
 # Machete
 
-[![Travis CI](https://img.shields.io/travis/com/StarChart-Labs/machete.svg?branch=master)](https://travis-ci.com/StarChart-Labs/machete) [![codecov](https://codecov.io/gh/StarChart-Labs/machete/branch/master/graph/badge.svg)](https://codecov.io/gh/StarChart-Labs/machete) [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/StarChart-Labs/machete/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/StarChart-Labs/machete/branches/master) [![Changelog validated by Chronicler](https://chronicler.starchartlabs.org/images/changelog-chronicler-success.png)](https://chronicler.starchartlabs.org/)
+![GitHub Actions](https://github.com/StarChart-Labs/machete/workflows/Java%20CI/badge.svg?branch=master) [![codecov](https://codecov.io/gh/StarChart-Labs/machete/branch/master/graph/badge.svg)](https://codecov.io/gh/StarChart-Labs/machete) [![Black Duck Security Risk](https://copilot.blackducksoftware.com/github/repos/StarChart-Labs/machete/branches/master/badge-risk.svg)](https://copilot.blackducksoftware.com/github/repos/StarChart-Labs/machete/branches/master) [![Changelog validated by Chronicler](https://chronicler.starchartlabs.org/images/changelog-chronicler-success.png)](https://chronicler.starchartlabs.org/)
 
 Cutting through the Amazonian thicket: Utilities for interacting with AWS
 
