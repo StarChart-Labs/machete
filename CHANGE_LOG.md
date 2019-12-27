@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.2.2]
 ###
 - Updated com.amazonaws:aws-java-sdk-ssm to 1.11.699 fro 1.11.598 for bugfixes and security updates
 - Updated com.amazonaws:aws-lambda-java-events to 2.2.7 from 2.2.6 for bugfixes and security updates
