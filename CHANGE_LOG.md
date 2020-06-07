@@ -5,9 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- (GH-17) Changed module name `org.starchartlabs.machete.machete.sns` to `org.starchartlabs.machete.sns`
+- (GH-17) Changed module name `org.starchartlabs.machete.machete.ssm` to `org.starchartlabs.machete.ssm`
 
 ## [0.2.2]
-###
+### Changed
 - Updated com.amazonaws:aws-java-sdk-ssm to 1.11.699 fro 1.11.598 for bugfixes and security updates
 - Updated com.amazonaws:aws-lambda-java-events to 2.2.7 from 2.2.6 for bugfixes and security updates
 - Updated com.fasterxml.jackson.core:jackson-databind to 2.10.1 from 2.9.9.1 for bugfixes and security updates
