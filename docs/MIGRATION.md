@@ -1,6 +1,6 @@
 # Major Version Migrations
 
-This details steps for migrating between major versions of Alloy, which may contain breaking changes
+This details steps for migrating between major versions of Machete, which may contain breaking changes
 
 ## 0.x to 1.x
 
