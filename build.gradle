@@ -59,10 +59,9 @@ subprojects{
     
     // Apply module naming to all projects
     // Add LICENSE so it is included in all JARs, as well as dependent licenses, fulfilling the "distributions include license" requirement
-    // TODO romeara - GH-17 Fix module names in the next major revision (backwards-incompatible change)
     jar {
         manifest {
-            attributes("Automatic-Module-Name": "${project.group}.${project.name}".replaceAll("-", "."))
+            attributes("Automatic-Module-Name": "${project.group}.${project.name  - 'machete-'}".replaceAll("-", "."))
         }
     }
     
