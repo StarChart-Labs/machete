@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - (GH-17) Changed module name `org.starchartlabs.machete.machete.sns` to `org.starchartlabs.machete.sns`
 - (GH-17) Changed module name `org.starchartlabs.machete.machete.ssm` to `org.starchartlabs.machete.ssm`
+- Update com.amazonaws:aws-java-sdk-ssm from 1.11.699 to 1.11.797
+- Update com.amazonaws:aws-lambda-java-events from 2.2.7 to 3.1.0
+- Update com.fasterxml.jackson.core:jackson-databind override from 2.10.1 to 2.11.0
+- Update org.starchartlabs.alloy:alloy-core from 0.5.0 to 1.0.0
+- Update org.mockito:mockito-core from 2.28.2 to 3.3.3
+- Update org.testng:testng from 6.14.3 to 7.1.0
 
 ## [0.2.2]
 ### Changed
