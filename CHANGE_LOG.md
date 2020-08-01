@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.0.0]
 ### Changed
 - (GH-17) Changed module name `org.starchartlabs.machete.machete.sns` to `org.starchartlabs.machete.sns`
 - (GH-17) Changed module name `org.starchartlabs.machete.machete.ssm` to `org.starchartlabs.machete.ssm`
