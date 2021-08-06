@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.starchartlabs.machete.ssm.parameter.SecuredParameter;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -26,9 +27,16 @@ public class SecuredParameterTest {
     @Mock
     private AWSSimpleSystemsManagement systemManagementClient;
 
+    private AutoCloseable mocks;
+
     @BeforeMethod
     public void prepareMocks() {
-        MockitoAnnotations.initMocks(this);
+        mocks = MockitoAnnotations.openMocks(this);
+    }
+
+    @AfterMethod
+    public void closeMocks() throws Exception {
+        mocks.close();
     }
 
     @Test(expectedExceptions = NullPointerException.class)
