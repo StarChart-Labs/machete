@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Updated com.amazonaws:aws-java-sdk-ssm from 1.12.128 to 1.12.305
+- Updated com.fasterxml.jackson.core:jackson-databind from 2.13.0 to 2.13.4
+- Updated org.starchartlabs.alloy:alloy-core from 1.0.2 to 1.0.3
+- Updated org.mockito:mockito-core from 4.1.0 to 4.8.0
+- Updated org.testng:testng from 7.4.0 to 7.5
 
 ## [1.0.2]
 ### Changed
