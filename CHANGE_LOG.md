@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.0.3]
 ### Changed
 - Updated com.amazonaws:aws-java-sdk-ssm from 1.12.128 to 1.12.305
 - Updated com.fasterxml.jackson.core:jackson-databind from 2.13.0 to 2.13.4
